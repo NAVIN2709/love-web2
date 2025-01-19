@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="love.png"></link>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: rgb(246, 198, 206);
+        }
+        .btn-no{
+            background-color: rgb(243, 148, 176);
+            color: rgb(0, 0, 0);
+            padding: 10px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            width: 40px;
+            height: 30px;
+            left:20%;
+            top: 246px;
+            display: none; /* inline-block */
+            text-align: center;
+        }
+
+        .btn-yes{
+            background-color: rgb(243, 148, 176);
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            left:20%;
+            width: 40px;
+            height: 30px;
+            top: 246px;
+            display: none; /* inline-block */
+            text-align: center;
+        }
+        .btn-yes:hover,.btn-no:hover{
+            background-color: rgb(247, 160, 160);
+            color: white;
+        }
+
+
+        .gip1{
+            margin: 20px;
+            position: fixed;
+            left: 20%;
+            display: none;
+        }
+        .h1{
+            color: rgb(255, 0, 119);
+            position: relative;
+            top:20px;
+            left:5vw;
+            font-size: 25px;
+            display: none;
+        }
+        .h2{
+            color: rgb(255, 0, 119);
+            position: fixed;
+            top:10%;
+            left:20%;
+            font-size: 30px;
+            animation: bounce 1s linear infinite;
+        }
+        @keyframes bounce{
+            0% { transform: translateY(0);}
+            50% { transform: translateY(-10px);}
+            100% { transform: translateY(0);}
+        }
+        .inp{
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+            margin-top: 200px;
+            margin-left: 20%; 
+            display: inline-block;
+            font-size: 20px;
+        }
+        .inp:focus{
+            outline: none;
+            border: 2px solid rgb(243, 148, 176);
+        }
+        .btn-inp{
+            background-color: rgb(243, 148, 176);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 20px;
+            margin-left: 20%;
+            font-size: 20px;
+            position: relative;
+            left: 20%;
+            top: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="h2" id="h2">Enter Your Name</h1>
+    <input type="text" placeholder="Enter your name" id="inp" class="inp"><br>
+    <p id="btn-inp" class="btn-inp" onclick="inp()">submit</p>
+    <h1 class="h1" id="h1">Will you be my Valentine? 🥰</h1>
+    <div class="container">
+        <video class="gip1" src="giphappy.mp4" id="gip1" width="200px" height="200px" autoplay loop muted></video>
+        <span id="btn-yes" class="btn-yes" onclick="yes()">YES</span>
+        <span id="btn-no" class="btn-no" onclick="no()">NO</span>
+    </div>
+    <script>
+        function no(){
+            w=100; 
+            h=100;
+            gip1 = document.getElementById('gip1');
+            gip1.setAttribute('src', "gipsad.mp4");
+            gip1.play();
+            bt1=document.getElementById('btn-yes');
+            bt1.style.height=(Number(bt1.style.height.slice(0,bt1.style.height.indexOf('p')))+h)+'px';
+            bt1.style.width=(Number(bt1.style.width.slice(0,bt1.style.width.indexOf('p')))+w)+'px';
+            w+=10;
+            h+=10;
+            h1=document.getElementById('h1');
+            h1.innerText=`Please be my princess ${message} 😭`;
+        }
+        function yes(){
+            gip1 = document.getElementById('gip1');
+            gip1.setAttribute('src', "giphappy.mp4");
+            gip1.play();
+            bt1=document.getElementById('btn-yes');
+            bt1.style.height="";
+            bt1.style.width="";
+            bt2=document.getElementById('btn-no');
+            bt2.style.height="";
+            bt2.style.width="";
+            h1=document.getElementById('h1');
+            h1.innerText="Yayy, I love you 😘 ";
+        }
+        function inp(){
+            name = document.getElementById('inp').value;
+            document.getElementById('h2').style.display="none";
+            document.getElementById('inp').style.display="none";
+            document.getElementById('btn-inp').style.display="none";
+            document.getElementById('h1').style.display="block";
+            document.getElementById('btn-yes').style.display="inline-block";
+            document.getElementById('btn-no').style.display="inline-block";
+            document.getElementById('gip1').style.display="block";
+            h1=document.getElementById("h1");
+            h1.innerHTML =`Will you be my Valentine ${name}? 🥰`;
+        }
+    </script>
+</body>
+</html>
